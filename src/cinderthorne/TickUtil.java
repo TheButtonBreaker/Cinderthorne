@@ -28,14 +28,7 @@ public class TickUtil {
 	}
 
 	protected static void doUpdates() {
-		//Hand this off to another thread to prevent lagging the tick thread. (It's important the tick thread doesn't get lagged up)
-		Thread newThread = new Thread(new Runnable(){
-			@Override
-			public void run() {
-				CINDERTHORNE.game.update();
-				CINDERTHORNE.game.panel.repaint();
-			}
-		});
-		newThread.start();
+		CINDERTHORNE.game.update();
+		CINDERTHORNE.game.panel.repaint();
 	}
 }
