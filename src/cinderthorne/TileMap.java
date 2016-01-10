@@ -36,7 +36,7 @@ public class TileMap {
 			for(int y = 0; y < tiles[x].length; y++){
 				Tile t = getTile(x,y);
 				if(t!=null){
-					tiles[x][y].drawTile(g, new Point(x*32,y*32), x, y);
+					tiles[x][y].drawTile(g, new Point(x*Tile.SIZE,y*Tile.SIZE), x, y);
 				}
 			}
 		}

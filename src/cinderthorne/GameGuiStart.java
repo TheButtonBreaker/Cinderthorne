@@ -19,13 +19,17 @@ public class GameGuiStart extends GameGui {
 	
 	public void draw(Graphics2D g, int width, int height){
 		Dimension RESOLUTION = Rendering.RESOLUTION;
-		g.setFont(createCinderFont(0,100));
+		g.setFont(createCinderFont(0,120));
 		g.setColor(Color.white);
 		String str = "Cinderthorne";
 		int strwidth = g.getFontMetrics().stringWidth(str);
 		g.rotate(rot, width/2+50, height/2+50);
 		g.drawString(str, RESOLUTION.width/2-strwidth/2, g.getFontMetrics().getHeight()+20);
-		g.drawRect(width/2, height/2, 100, 100);
+		
+		str = "Press any key to start";
+		g.setFont(createCinderFont(0,30));
+		strwidth = g.getFontMetrics().stringWidth(str);
+		g.drawString(str, RESOLUTION.width/2-strwidth/2, height/2+g.getFontMetrics().getHeight()+20);
 	}
 	
 	public static Font createCinderFont(int style, float size){
