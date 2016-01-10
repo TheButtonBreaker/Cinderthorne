@@ -30,16 +30,16 @@ public class GameGuiGame extends GameGui {
 		boolean sDown = isKeyDown('s');
 		boolean dDown = isKeyDown('d');
 		if(wDown){
-			playerEntity.locY -= playerEntity.speed;
+			playerEntity.attemptMove(0, -1, tileMap);;
 		}
 		if(aDown){
-			playerEntity.locX -= playerEntity.speed;
+			playerEntity.attemptMove(-1, 0, tileMap);;
 		}
 		if(sDown){
-			playerEntity.locY += playerEntity.speed;
+			playerEntity.attemptMove(0, 1, tileMap);;
 		}
 		if(dDown){
-			playerEntity.locX += playerEntity.speed;
+			playerEntity.attemptMove(1, 0, tileMap);;
 		}
 	}
 	

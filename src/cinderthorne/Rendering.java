@@ -8,7 +8,7 @@ import java.awt.RenderingHints;
 import javax.swing.JPanel;
 
 public class Rendering {
-	public static final Dimension RESOLUTION = new Dimension(1152,720);
+	public static final Dimension RESOLUTION = new Dimension(1200,720);
 	
 	public static GameGui gui = null;
 	
@@ -31,6 +31,4 @@ public class Rendering {
 		
 		gui.draw(g,width,height);
 	}
-
-
 }
