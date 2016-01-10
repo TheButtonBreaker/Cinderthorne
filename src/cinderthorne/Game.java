@@ -85,6 +85,8 @@ public class Game {
 	}
 
 	public void update() {
-		
+		if(Rendering.gui != null){
+			Rendering.gui.update();
+		}
 	}
 }
