@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -30,6 +31,11 @@ public class GameGuiStart extends GameGui {
 		g.setFont(createCinderFont(0,30));
 		strwidth = g.getFontMetrics().stringWidth(str);
 		g.drawString(str, RESOLUTION.width/2-strwidth/2, height/2+g.getFontMetrics().getHeight()+20);
+	}
+	
+	@Override
+	public void keyDown(KeyEvent k){
+		Rendering.gui = new GameGuiGame();
 	}
 	
 	public static Font createCinderFont(int style, float size){

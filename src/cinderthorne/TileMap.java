@@ -1,6 +1,5 @@
 package cinderthorne;
 
-import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Point;
 
@@ -31,14 +30,21 @@ public class TileMap {
 		return tiles[x][y];
 	}
 	
-	public void drawAllTiles(Graphics2D g, Game game, Dimension resolution) {
+	public void drawAllTiles(Graphics2D g, int xOff, int yOff) {
 		for(int x = 0; x < tiles.length; x++){
 			for(int y = 0; y < tiles[x].length; y++){
 				Tile t = getTile(x,y);
 				if(t!=null){
-					tiles[x][y].drawTile(g, new Point(x*Tile.SIZE,y*Tile.SIZE), x, y);
+					int drawX = xOff+x*Tile.SIZE;
+					int drawY = yOff+y*Tile.SIZE;
+					if(drawX+Tile.SIZE > 0 && drawX < Rendering.RESOLUTION.width){
+						if(drawY+Tile.SIZE > 0 && drawY < Rendering.RESOLUTION.height){
+							t.drawTile(g, new Point(drawX,drawY), x, y);
+						}
+					}
 				}
 			}
 		}
 	}
+	
 }
