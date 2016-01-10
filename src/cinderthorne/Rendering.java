@@ -8,10 +8,9 @@ import java.awt.RenderingHints;
 import javax.swing.JPanel;
 
 public class Rendering {
-	
 	public static final Dimension RESOLUTION = new Dimension(1152,720);
 	
-	private static GameGui gui = null;
+	public static GameGui gui = null;
 	
 	public static void doRendering(Graphics gee, JPanel p, Game game){
 		if(gui == null){

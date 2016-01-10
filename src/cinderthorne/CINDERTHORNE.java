@@ -1,6 +1,5 @@
 package cinderthorne;
 
-
 public class CINDERTHORNE {
 	public static Game game = null;
 
