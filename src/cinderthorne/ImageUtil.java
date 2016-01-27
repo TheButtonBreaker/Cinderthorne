@@ -13,7 +13,7 @@ public class ImageUtil {
 		try {
 			return ImageIO.read(new File(resource));
 		} catch (IOException e) {
-			System.err.println("Couldn't load: " + resource);
+			System.err.println("Couldn't load: " + resource + "(Is the file there, is it a typo, etc.?)");
 			e.printStackTrace();
 		}
 		return null;
