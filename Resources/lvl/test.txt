@@ -1,0 +1,12 @@
+>Tiles
+size 10,10
+w,w,w,w,w,w,w,w,w,w
+w,w,w,w,w,w,w,w,w,w
+w,w,q,q,q,q,q,q,w,w
+w,w,q,q,q,q,q,q,w,w
+w,w,q,q,q,q,q,q,w,w
+w,w,q,q,q,q,q,q,w,w
+w,w,q,q,q,q,q,q,w,w
+w,w,q,q,q,q,q,q,w,w
+w,w,w,w,w,w,w,w,w,w
+w,w,w,w,w,w,w,w,w,w

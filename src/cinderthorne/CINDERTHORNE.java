@@ -1,5 +1,7 @@
 package cinderthorne;
 
+import cinderthorne.util.TickUtil;
+
 public class CINDERTHORNE {
 	public static Game game = null;
 
@@ -7,5 +9,6 @@ public class CINDERTHORNE {
 		System.out.println("It begins.");
 
 		game = new Game();
+		TickUtil.startTicking();
 	}
 }

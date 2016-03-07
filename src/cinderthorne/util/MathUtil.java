@@ -1,4 +1,4 @@
-package cinderthorne;
+package cinderthorne.util;
 
 import java.util.Random;
 
