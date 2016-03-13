@@ -1,6 +1,6 @@
 package cinderthorne.world.gamesection;
 
-import cinderthorne.world.WorldUtil;
+import cinderthorne.util.WorldUtil;
 
 public abstract class GameSectionLoadHandler {
 	public GameSectionLoadHandler(String name){

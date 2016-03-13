@@ -1,10 +1,7 @@
 package cinderthorne;
 
 import java.awt.Graphics2D;
-import java.util.ArrayList;
-import java.util.Iterator;
 
-import cinderthorne.entity.Entity;
 import cinderthorne.world.GameWorld;
 
 public class GameGuiGame extends GameGui {

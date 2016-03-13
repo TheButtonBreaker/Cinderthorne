@@ -1,12 +1,42 @@
+#Just a note, lines starting with # are ignored by the game
+#So these lines are ignored
+#Also, the 'none' tile is an invisible tile
+
+#In the alibis section, you're going to define your tiles.
+#These alibis are important and you will use these later in your gamesection creation
+#I have some examples
+
+>Alibis
+w BlackDirt
+q BlackDirtMushrooms
+x BlackDirtRedMushrooms
+
+#The size variable is there to tell the game how many rows a gamesection has. Add 1 to the total number of rows you have
+#The column sizes are automagically generated
+
 >Tiles
-size 10,10
-w,w,w,w,w,w,w,w,w,w
-w,w,w,w,w,w,w,w,w,w
-w,w,q,q,q,q,q,q,w,w
-w,w,q,q,q,q,q,q,w,w
-w,w,q,q,q,q,q,q,w,w
-w,w,q,q,q,q,q,q,w,w
-w,w,q,q,q,q,q,q,w,w
-w,w,q,q,q,q,q,q,w,w
-w,w,w,w,w,w,w,w,w,w
-w,w,w,w,w,w,w,w,w,w
+size 22
+w,x,w,w,x,w,w,w,w,w
+w,w,w,w,x,w,w,w,w,w,w,w,w,w
+x,x,x,w,w,q,w,w,w,w,w,w,w,q,w
+w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,x,x,x,x,x,w,w
+w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,x,w,w,w,x,w,q
+w,w,w,x,w,w,w,w,w,w,w,w,q,w,w,w,w,x,w,w,w,w
+w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,x,x,x,x,w,w,x
+w,q,w,w,w,w,w,w,w,w,w,w,w,w,w, , , , , ,q,x
+w,q,w,w,w,w,w,w,w,w,w,w,w,w, , , , , , ,w,x
+w,w,w,w,w,w,w,w,w,q,w,w, , , , , , , ,q,w,w,w
+w,w,w,w,w,w,w,w,w,w,w,w,w,w,q, , , , ,q,w,w,w
+w,w,w,x,w,w,w,q,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w
+w,w,w,w,w,w,w,w, , , , ,w,w,w,w,w,x,x,q,w,w, 
+w,w,w,w,w,w,w, , , , , , , , ,w,w,w,w,w,w, 
+ ,q,w,w,w,w, , , , , , , , , , ,q,w,w,w, 
+ , ,q,w,w, , , , , , , , , , , ,w,w,w, 
+ , , ,w,w, , , , , , , , , , ,q,w,w, 
+ , , , ,w,w,w,w,w,w,w,w,w,w,w,w,w, 
+ , , , , ,q,w,w,w,w,w,w,w, , , , 
+ , , , , , , , ,w,w,w , , 
+ , , , , , , , , , , ,
+ 
+>Walls
+defaultWalls

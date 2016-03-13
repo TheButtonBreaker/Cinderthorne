@@ -4,6 +4,6 @@ import cinderthorne.world.Tile;
 
 public class EntityHumanoid extends Entity{
 	public EntityHumanoid(String name) {
-		super(Tile.TILESIZE);
+		super(Tile.TILESIZE-4);
 	}
 }

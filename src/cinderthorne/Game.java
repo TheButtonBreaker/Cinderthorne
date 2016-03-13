@@ -24,14 +24,15 @@ public class Game {
 				RenderingUtil.doRendering(gee, this, Game.this);
 			}
 		};
+		RenderingUtil.setGui(new GameGuiStart(), frame, panel);
 		frame.add(panel);
 		frame.setIgnoreRepaint(true);
 		//panel.setDoubleBuffered(true)
 		//We don't add listeners here anymore since GameGuis are now listeners themselves.
 		frame.setVisible(true);
 		frame.requestFocus();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				
-		RenderingUtil.setGui(new GameGuiStart(), frame, panel);
 	}
 
 	public void update() {
