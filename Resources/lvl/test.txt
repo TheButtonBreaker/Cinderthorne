@@ -1,6 +1,5 @@
 #Just a note, lines starting with # are ignored by the game
 #So these lines are ignored
-#Also, the 'none' tile is an invisible tile
 
 #In the alibis section, you're going to define your tiles.
 #These alibis are important and you will use these later in your gamesection creation
@@ -27,7 +26,7 @@ w,q,w,w,w,w,w,w,w,w,w,w,w,w,w, , , , , ,q,x
 w,q,w,w,w,w,w,w,w,w,w,w,w,w, , , , , , ,w,x
 w,w,w,w,w,w,w,w,w,q,w,w, , , , , , , ,q,w,w,w
 w,w,w,w,w,w,w,w,w,w,w,w,w,w,q, , , , ,q,w,w,w
-w,w,w,x,w,w,w,q,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w
+w,w,w,x,w,w,w,q,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w
 w,w,w,w,w,w,w,w, , , , ,w,w,w,w,w,x,x,q,w,w, 
 w,w,w,w,w,w,w, , , , , , , , ,w,w,w,w,w,w, 
  ,q,w,w,w,w, , , , , , , , , , ,q,w,w,w, 
