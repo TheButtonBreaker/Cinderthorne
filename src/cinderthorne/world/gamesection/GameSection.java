@@ -23,14 +23,20 @@ public class GameSection {
 	public void update() {
 	}
 
-	public void render(Graphics2D g, int xOffset, int yOffset) {
+	public void render(Graphics2D g, int xOffset, int yOffset, int width, int height) {
 		if(tiles != null){
 			for(int y = 0; y < tiles.length; y++){
 				for(int x = 0; x < tiles[y].length; x++){
-					Tile t = Tile.getTile(tiles[y][x]);
-					if(t != null){
-						int i = Tile.TILESIZE;
-						t.render(g, x*i+xOffset, y*i+yOffset, i, i);
+					int i = Tile.TILESIZE;
+					int renderX = x*i+xOffset;
+					int renderY = y*i+yOffset;
+					if(renderX+i > 0 && renderY+   i > 0){
+						if(renderX < width && renderY < height){
+							Tile t = Tile.getTile(tiles[y][x]);
+							if(t != null){
+								t.render(g, renderX, renderY, i, i);
+							}
+						}
 					}
 				}
 			}

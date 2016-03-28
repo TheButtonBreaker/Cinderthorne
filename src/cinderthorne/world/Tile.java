@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.imageio.ImageIO;
@@ -15,15 +16,34 @@ public class Tile {
 	public static HashMap<String, Tile> alibis = new HashMap<String, Tile>();
 	private static int currentID = 1;
 
+	public HashMap<String,Object> properties = new HashMap<String,Object>();
+	
 	public int id;
 	public String name;
-	private boolean defaultWall;
-
-	public Tile(String name, boolean defaultWall) {
+	
+	public Tile(String name) {
+		init(name);
+	}
+	
+	public static void loadAllTiles(ArrayList<String> lines){
+		Tile currentTile = null;
+		for(int i = 0; i < lines.size(); i++){
+			String line = lines.get(i);
+			if(line != null && !line.equals("")){
+				if(line.startsWith(">")){
+					currentTile = new Tile(line.substring(1));
+				}else if(currentTile != null){
+					String[] params = line.split("=");
+					currentTile.properties.put(params[0], params[1]);
+				}
+			}
+		}
+	}
+	
+	private void init(String name){
 		this.name = name;
 		tiles.put(currentID, this);
 		id = currentID;
-		this.defaultWall = defaultWall;
 		currentID++;
 	}
 
@@ -31,7 +51,7 @@ public class Tile {
 	boolean hasTexture = true;
 
 	public boolean isDefaultWall(){
-		return defaultWall;
+		return (boolean)properties.get("isWall").equals("true");
 	}
 	
 	public void render(Graphics2D g, int x, int y, int width, int height) {
@@ -63,8 +83,8 @@ public class Tile {
 		return null;
 	}
 
-	public static Tile dirtBlack = new Tile("BlackDirt",false);
-	public static Tile dirtBlackMushrooms = new Tile("BlackDirtMushrooms",false);
-	public static Tile dirtBlackRedMushrooms = new Tile("BlackDirtRedMushrooms",true);
+//	public static Tile dirtBlack = new Tile("BlackDirt",false);
+//	public static Tile dirtBlackMushrooms = new Tile("BlackDirtMushrooms",false);
+//	public static Tile dirtBlackRedMushrooms = new Tile("BlackDirtRedMushrooms",true);
 
 }

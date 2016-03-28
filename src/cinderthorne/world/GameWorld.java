@@ -36,32 +36,23 @@ public class GameWorld implements KeyListener{
 	}
 
 	public void render(Graphics2D g, int width, int height) {
-		xOffset = width/2 - player.posX;
-		yOffset = height/2 - player.posY;
+		updateOffsets(width, height);
 		
 		if(currentSection != null){
-			currentSection.render(g, xOffset, yOffset);
+			currentSection.render(g, xOffset, yOffset, width, height);
 		}
 		Iterator<Entity> it = entities.iterator();
 		while(it.hasNext()){
+			updateOffsets(width, height);
 			Entity e = it.next();
 			e.draw(g, xOffset, yOffset);
 		}
+		updateOffsets(width, height);
 		player.draw(g, xOffset, yOffset);
-		
-		//First stuff here before the big update
-//		int xOff = 0;
-//		int yOff = 0;
-//		
-//		xOff = width/2-GameWorld.player.getHitbox().width/2 - world.player.posX;
-//		yOff = height/2-GameWorld.player.getHitbox().height/2 - world.player.posY;
-//		
-//		world.render(g, width, height);
-//		Iterator<Entity> it = entities.iterator();
-//		while(it.hasNext()){
-//			Entity e = it.next();
-//			e.draw(g, xOff, yOff);
-//		}
+	}
+	private void updateOffsets(int width, int height){
+		xOffset = width/2 - player.posX;
+		yOffset = height/2 - player.posY;
 	}
 
 	@Override
