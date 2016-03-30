@@ -28,6 +28,9 @@ public class GameGuiGame extends GameGui {
 		if(dDown){
 			GameWorld.player.attemptMove(1, 0, world.currentSection);
 		}
+		GameWorld.player.setMoving(wDown||aDown||sDown||dDown);
+		
+		world.update();
 	}
 	
 	@Override

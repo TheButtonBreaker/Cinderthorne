@@ -19,7 +19,7 @@ public class WorldUtil {
 			int lineNumber = lineNumero - 2;
 			if (line.startsWith("size ")) {
 				String sizePart = line.substring(5);
-				world.tiles = new int[Integer.parseInt(sizePart)][0];
+				world.tiles = new int[Integer.parseInt(sizePart)+1][0];
 			} else {
 				String[] tiles = line.split(",");
 				world.tiles[lineNumber] = new int[tiles.length];

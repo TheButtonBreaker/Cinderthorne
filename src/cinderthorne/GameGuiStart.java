@@ -21,14 +21,7 @@ public class GameGuiStart extends GameGui {
 		createFont();
 	}
 	
-	private float fadeAmount = 1f;
 	private byte animStage = 0;
-	// 0 = "A game by ZianGames and ThatCat"
-	// 1 = Fade Out
-	// 2 = Fade In
-	// 3 = "Cinderthorne"
-	// 4 = Press any key appears and blinks
-	// (Nothing more, stuck at 4 for eternity until the GameGui is exited)
 	
 	public void draw(Graphics2D g, int width, int height){
 		if(animStage == 0){
@@ -37,54 +30,31 @@ public class GameGuiStart extends GameGui {
 			String str = "A game by ZianGames and ThatCat";
 			int strwidth = g.getFontMetrics().stringWidth(str);
 			g.drawString(str, width/2-strwidth/2, height/2+g.getFontMetrics().getHeight()/2);
-		}else if(animStage >= 3){
+		}else if(animStage >= 1){
 			BufferedImage titleImg = ImageUtil.load("Title.png");
 			int cushion = 10;
 			int imgWidth = width - cushion*2;
 			int imgRatio = imgWidth/titleImg.getWidth();
 			g.drawImage(titleImg, width/2-imgWidth/2, cushion, imgWidth, titleImg.getHeight()*imgRatio, null);
 			
-			if(animStage == 4){
-				g.setColor(Color.white);
-				String str = "Press any key to start";
-				g.setFont(createCinderFont(0,30));
-				int strwidth = g.getFontMetrics().stringWidth(str);
-				g.drawString(str, width/2-strwidth/2, height/2+g.getFontMetrics().getHeight()+20);
-			}
-		}
-		
-		if(fadeAmount > 0){
-			g.setColor(new Color(0,0,0,fadeAmount));
-			g.fillRect(0, 0, width, height);
+			g.setColor(Color.white);
+			String str = "Press any key to start";
+			g.setFont(createCinderFont(0,30));
+			int strwidth = g.getFontMetrics().stringWidth(str);
+			g.drawString(str, width/2-strwidth/2, height/2+g.getFontMetrics().getHeight()+20);
 		}
 	}
 
-	int currentAnimLength = 0; //How long has the animation been playing
 	@Override
-	public void update(){
-		int[] durations = {100,100,1000,1000,2};
-		currentAnimLength++;
-		
-		if(currentAnimLength >= durations[animStage]){
-			currentAnimLength = 0;
-			if(animStage < durations.length-1){
-				animStage++;
-			}
-		}
-		
-		float increment = 0.02f; //How much does the fade change every tick?
-		fadeAmount = fadeAmountChange(increment);
-	}
-	private float fadeAmountChange(float f){
-		return (float) Math.min(Math.max(0, f - 0.002),1);
+	public void update(){		
 	}
 	
 	@Override
 	public void keyPressed(KeyEvent k){
-		if(animStage == 4){
+		if(animStage >= 1){
 			RenderingUtil.setGui(new GameGuiGame(), CINDERTHORNE.game.frame, CINDERTHORNE.game.panel);;
 		}else{
-			animStage = 4;
+			animStage++;
 		}
 
 	}

@@ -12,8 +12,15 @@ import cinderthorne.world.gamesection.GameSection;
 public class Entity {
 	public int posX;
 	public int posY;
-	private int size;
-	public int movespeed = 4;
+	public int size;
+	public int movespeed = 1;
+	public int direction = 0;
+	protected boolean moving = false;
+	
+	public static final int DIRECTION_NORTH = 0;
+	public static final int DIRECTION_EAST = 1;
+	public static final int DIRECTION_SOUTH = 2;
+	public static final int DIRECTION_WEST = 3;
 
 	public Entity(int size) {
 		this.size = size;
@@ -27,6 +34,10 @@ public class Entity {
 		return new Rectangle(x, y, size, size);
 	}
 
+	public void setDirection(int direction){
+		this.direction = direction;
+	}
+	
 	public boolean canMoveTo(Point targetPoint, GameSection map) {
 		Rectangle hitbox = getHitbox(targetPoint.x, targetPoint.y);
 
@@ -72,6 +83,13 @@ public class Entity {
 
 		return true;
 	}
+	
+	public void setMoving(boolean moving){
+		this.moving = moving;
+	}
+	public boolean isMoving(){
+		return moving;
+	}
 
 	public void attemptMove(int right, int down, GameSection map) {
 		down *= movespeed;
@@ -80,11 +98,28 @@ public class Entity {
 			posX += right;
 			posY += down;
 		}
+		if(down == 0){
+			if(right<0){
+				this.setDirection(DIRECTION_WEST);
+			}else{
+				this.setDirection(DIRECTION_EAST);
+			}
+		}else{
+			if(down<0){
+				this.setDirection(DIRECTION_NORTH);
+			}else{
+				this.setDirection(DIRECTION_SOUTH);
+			}
+		}
 	}
 
 	public void draw(Graphics2D g, int xOff, int yOff) {
+		forceDraw(g,posX+xOff,posY+yOff);
+	}
+	
+	public void forceDraw(Graphics2D g, int x, int y) {
 		g.setColor(Color.red);
-		g.drawRect(xOff + posX, yOff + posY, size, size);
+		g.drawRect(x, y, size, size);
 	}
 
 	public void update() {

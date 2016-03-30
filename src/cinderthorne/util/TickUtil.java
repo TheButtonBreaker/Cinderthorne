@@ -4,38 +4,48 @@ import cinderthorne.CINDERTHORNE;
 
 public class TickUtil {
 	private static long sleep = 10; // How long we should let the Thread sleep
-	private static long tickDelay = 20; // Wait __ milliseconds before doing
-										// another tick
-	private static long lastTickTime = System.currentTimeMillis() - tickDelay;
-
+	private static long tickDelay = 5*1000000; // Wait __ milliseconds before updating
+	private static long lastTickTime = System.nanoTime() - tickDelay;
+	
+	private static FPSCounter counter;
 	public static void startTicking() {
-		Thread threaderino = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				while (true) {
-					long currentTime = System.currentTimeMillis();
-					try {
-						Thread.sleep(sleep);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					while (currentTime - lastTickTime >= tickDelay) {
-						// Do this stuff until we are caught up with our ticks
-						doUpdates();
-						lastTickTime += tickDelay;
-					}
-				}
+		counter = new FPSCounter();
+		counter.start();
+		while (true) {
+			long currentTime = System.nanoTime();
+			while (currentTime - lastTickTime >= tickDelay) {
+				doUpdates();
+				lastTickTime += tickDelay;//currentTime;
+				doRepaints();
 			}
-		});
-		threaderino.start();
+		}
+	}
+
+	public static double getFps(){
+		return counter.fps();
+	}
+	
+	private static void doRepaints() {
+		CINDERTHORNE.game.panel.repaint();	
+		counter.interrupt();
 	}
 
 	protected static void doUpdates() {
 		if (CINDERTHORNE.game != null) {
 			CINDERTHORNE.game.update();
-			CINDERTHORNE.game.panel.repaint();
+			//doSleep();
 		} else {
 			System.out.println("Warning, CINDERTHORNE.game is null");
+		}
+	}
+
+	private static void doSleep() {
+		if(sleep > 0){
+			try {
+				Thread.sleep(sleep);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

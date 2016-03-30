@@ -1,0 +1,8 @@
+>BlackDirt
+isWall=false
+
+>BlackDirtMushrooms
+isWall=false
+
+>BlackDirtRedMushrooms
+isWall=true

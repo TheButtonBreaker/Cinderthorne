@@ -13,10 +13,13 @@ import cinderthorne.Game;
 import cinderthorne.GameGui;
 
 public class RenderingUtil {
-	public static final Dimension RESOLUTION = new Dimension(1200, 720);
+	public static final Dimension RESOLUTION = new Dimension(1920, 1080);
 
 	private static GameGui gui = null;
 
+	static int fpsUpdateTimer = 10;
+	static int fpsUpdateTimerMax = fpsUpdateTimer;
+	static int fps = 0;
 	public static void doRendering(Graphics gee, JPanel p, Game game) {
 		Graphics2D g = (Graphics2D) gee;
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -29,13 +32,23 @@ public class RenderingUtil {
 		g.scale(pwidth / RESOLUTION.getWidth(), pheight / RESOLUTION.getHeight());
 		g.setColor(Color.black);
 		g.fillRect(0, 0, RESOLUTION.width, RESOLUTION.height);
-
+		
 		if (gui != null) {
 			// gui = new GameGuiStart();
 			gui.draw(g, width, height);
 		} else {
 			System.out.println("Warning, Game gui is null");
 		}
+		
+		g.setColor(new Color(0,0,0,100));
+		g.fillRect(0, 0, 200, 20);
+		g.setColor(new Color(255,255,255,100));
+		fpsUpdateTimer--;
+		if(fpsUpdateTimer <= 0){
+			fpsUpdateTimer = fpsUpdateTimerMax;
+			fps = ((int)((TickUtil.getFps()/200)*100));
+		}
+		g.drawString("Speed: "+fps+"%", 1, 12);
 	}
 
 	public static void setGui(GameGui newGui, JFrame frame, JPanel panel) {
