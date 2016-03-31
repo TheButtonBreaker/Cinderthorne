@@ -9,7 +9,7 @@ import java.awt.event.MouseMotionListener;
 import java.util.HashMap;
 
 public abstract class GameGui implements KeyListener, MouseMotionListener, MouseListener {
-	protected static HashMap<Character,Boolean> downKeys = new HashMap<Character,Boolean>();
+	protected static HashMap<Integer,Boolean> downKeys = new HashMap<Integer,Boolean>();
 	protected static HashMap<Integer,Boolean> downButtons = new HashMap<Integer,Boolean>();
 	protected static int mouseX = 0;
 	protected static int mouseY = 0;
@@ -26,21 +26,21 @@ public abstract class GameGui implements KeyListener, MouseMotionListener, Mouse
 	}
 	
 	public void keyPressed(KeyEvent arg0) {
-		downKeys.put(arg0.getKeyChar(), true);
+		downKeys.put(arg0.getKeyCode(), true);
 	}
 	public void keyReleased(KeyEvent arg0) {
-		downKeys.put(arg0.getKeyChar(), false);
+		downKeys.put(arg0.getKeyCode(), false);
 	}
 	
 	public abstract void update(); // Done before 'draw' is called
 	public abstract void draw(Graphics2D g, int width, int height);
 	
-	public boolean isKeyDown(char key){
+	public boolean isKeyDown(int vkS){
 		boolean defaultVal = false;
 		try{
-			return downKeys.get(key);
+			return downKeys.get(vkS);
 		}catch(Exception e){
-			downKeys.put(key, false);
+			downKeys.put(vkS, false);
 			return defaultVal;
 		}
 	}

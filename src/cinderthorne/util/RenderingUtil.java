@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import cinderthorne.Game;
 import cinderthorne.GameGui;
+import cinderthorne.GameGuiStart;
 
 public class RenderingUtil {
 	public static final Dimension RESOLUTION = new Dimension(1920, 1080);
@@ -50,6 +51,7 @@ public class RenderingUtil {
 			fpsPercent = ((int)((TickUtil.getFps()/60)*100));
 			fps = (int)(TickUtil.getFps());
 		}
+		g.setFont(GameGuiStart.createCinderFont(0, 10));
 		g.drawString("Speed: "+fpsPercent+"%  -  FPS: "+fps, 1, 12);
 	}
 

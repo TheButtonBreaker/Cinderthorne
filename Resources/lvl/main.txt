@@ -1,0 +1,46 @@
+#Just a note, lines starting with # are ignored by the game
+#So these lines are ignored
+
+#In the alibis section, you're going to define your tiles.
+#These alibis are important and you will use these later in your gamesection creation
+#I have some examples
+
+>Alibis
+w BlackDirt
+q BlackDirtMushrooms
+x BlackDirtRedMushrooms
+o BlackDirtGoldMushrooms
+
+>Tiles
+size 22
+o,w,w,w,w,w,w,w
+x,x,w,w,x,w,w,w,w,w,w,w
+w,w,w,w,x,w,w,w,w,w,w,w,w,w
+x,x,x,w,w,q,w,w,w,w,w,w,w,q,w,w,x,x
+w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,x,x,x,x,x,w
+w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,x,w,w,w,x,w,q
+w,w,w,x,w,w,w,w,w,w,w,w,q,w,w,w,w,x,w,w,w,w,x
+w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,x,x,x,x,w,w,x,x
+w,q,w,w,w,w,w,w,w,w,w,w,w,w,w, , , , , ,q,x,x
+w,q,w,w,w,w,w,w,w,w,w,w,w,w, , , , , , ,w,x,x,w
+w,w,w,w,w,w,w,w,w,q,w,w, , , , , , , ,q,w,w,w,w,w,w
+w,w,w,w,w,w,w,w,w,w,w,w,w,w,q, , , , ,q,w,w,w,w,w,w,w,w
+w,w,w,x,w,w,w,q,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w
+w,w,w,w,w,w,w,w, , , , ,w,w,w,w,w,x,x,q,w,w,w,w,w,w,w, , , , 
+w,w,w,w,w,w,w, , , , , , , , ,w,w,w,w,w,w,w,w,w, , , 
+ ,q,w,w,w,w, , , , , , , , , , ,q,w,w,w,w,w,w, 
+ , ,q,w,w, , , , , , , , , , , ,w,w,w,w,w,w, 
+ , , ,w,w,w,w, , , , , , , ,w,q,w,w,w,w,w, 
+ , , , ,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w, , 
+ , , , , ,q,w,w,w,w,w,w,w,w,w,w, , , 
+ , , , , , , , ,w,w,w,w,w,w, , 
+ , , , , , , , , , ,w,w, , 
+ , , , , , , , , , , , ,
+
+>Walls
+defaultWalls
+
+>Doors
+#this is literally the very beggining of the game. you cant go back farther than this.
+main 3 3 no_entry main main
+testDoor 0 0 allows_entry main test1

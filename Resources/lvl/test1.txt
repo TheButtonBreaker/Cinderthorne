@@ -1,0 +1,32 @@
+#Just a note, lines starting with # are ignored by the game
+#So these lines are ignored
+
+#In the alibis section, you're going to define your tiles.
+#These alibis are important and you will use these later in your gamesection creation
+#I have some examples
+
+>Alibis
+w BlackDirt
+q BlackDirtMushrooms
+x BlackDirtRedMushrooms
+o BlackDirtGoldMushrooms
+
+>Tiles
+size 11
+x,x,x,w,w,w,w,x,x,x
+x,x,w,w,w,w,w,w,x,x
+x,w,w,q,q,w,w,w,q,x
+x,w,w,o,q,w,w,q,w,x
+w,q,w,q,w,w,w,w,w,w
+w,w,w,w,w,q,w,w,w,q
+w,w,w,q,w,w,w,w,w,q
+w,w,w,w,w,w,w,q,w,q
+q,w,q,w,w,w,q,q,q,q
+q,q,w,w,x,x,w,q,q,q
+ , , , , , , , , , 
+
+>Walls
+defaultWalls
+
+>Doors
+testDoor 3 3 allows_entry main test1

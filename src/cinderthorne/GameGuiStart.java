@@ -31,6 +31,9 @@ public class GameGuiStart extends GameGui {
 			int strwidth = g.getFontMetrics().stringWidth(str);
 			g.drawString(str, width/2-strwidth/2, height/2+g.getFontMetrics().getHeight()/2);
 		}else if(animStage >= 1){
+			BufferedImage bgImg = ImageUtil.load("Gui/TitleBG.png");
+			g.drawImage(bgImg, 0, 0, width, height, null);
+
 			BufferedImage titleImg = ImageUtil.load("Title.png");
 			int cushion = 10;
 			int imgWidth = width - cushion*2;
