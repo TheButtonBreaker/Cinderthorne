@@ -19,10 +19,14 @@ public class GameWorld implements KeyListener{
 	public int xOffset,yOffset;
 	
 	public GameWorld(){
-		currentSection = new GameSection("test");
-		player = new EntityHumanoid("Player");
+		currentSection = new GameSection("main");
+		player = new EntityHumanoid("Player", 32, 48);
+		Door mainDoor = currentSection.getDoor("main");
+		player.posX = mainDoor.posX*Tile.TILESIZE;
+		player.posY = mainDoor.posY*Tile.TILESIZE;
 	}
 	
+	boolean doorCooldown = false;
 	public void update() {
 		if(currentSection != null){
 			currentSection.update();
@@ -33,6 +37,15 @@ public class GameWorld implements KeyListener{
 			e.update();
 		}
 		player.update();
+		Door inDoor = currentSection.getOverlappingDoor(player);
+		if(inDoor != null){
+			if(!doorCooldown){
+				inDoor.playerEntered(player, this, currentSection);
+				doorCooldown = true;
+			}
+		}else{
+			doorCooldown = false;
+		}
 	}
 
 	public void render(Graphics2D g, int width, int height) {

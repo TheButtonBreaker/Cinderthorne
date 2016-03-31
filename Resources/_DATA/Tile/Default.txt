@@ -1,7 +1,13 @@
 >BlackDirt
 isWall=false
 
+>BlackDirtWall
+isWall=true
+
 >BlackDirtMushrooms
+isWall=false
+
+>BlackDirtGoldMushrooms
 isWall=false
 
 >BlackDirtRedMushrooms

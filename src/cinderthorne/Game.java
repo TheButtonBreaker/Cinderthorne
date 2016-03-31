@@ -24,6 +24,7 @@ public class Game {
 				RenderingUtil.doRendering(gee, this, Game.this);
 			}
 		};
+		panel.setDoubleBuffered(false);
 		RenderingUtil.setGui(new GameGuiStart(), frame, panel);
 		frame.add(panel);
 		frame.setIgnoreRepaint(true);

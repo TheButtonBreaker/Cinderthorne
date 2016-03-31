@@ -17,8 +17,9 @@ public class RenderingUtil {
 
 	private static GameGui gui = null;
 
-	static int fpsUpdateTimer = 10;
+	static int fpsUpdateTimer = 5;
 	static int fpsUpdateTimerMax = fpsUpdateTimer;
+	static int fpsPercent = 0;
 	static int fps = 0;
 	public static void doRendering(Graphics gee, JPanel p, Game game) {
 		Graphics2D g = (Graphics2D) gee;
@@ -46,9 +47,10 @@ public class RenderingUtil {
 		fpsUpdateTimer--;
 		if(fpsUpdateTimer <= 0){
 			fpsUpdateTimer = fpsUpdateTimerMax;
-			fps = ((int)((TickUtil.getFps()/200)*100));
+			fpsPercent = ((int)((TickUtil.getFps()/60)*100));
+			fps = (int)(TickUtil.getFps());
 		}
-		g.drawString("Speed: "+fps+"%", 1, 12);
+		g.drawString("Speed: "+fpsPercent+"%  -  FPS: "+fps, 1, 12);
 	}
 
 	public static void setGui(GameGui newGui, JFrame frame, JPanel panel) {

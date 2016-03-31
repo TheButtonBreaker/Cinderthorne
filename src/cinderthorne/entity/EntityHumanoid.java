@@ -1,7 +1,7 @@
 package cinderthorne.entity;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import cinderthorne.util.ImageUtil;
@@ -9,10 +9,19 @@ import cinderthorne.world.Tile;
 
 public class EntityHumanoid extends Entity{
 	public String name;
+	private int w;
+	private int h;
 	
-	public EntityHumanoid(String name) {
-		super(Tile.TILESIZE);
+	public EntityHumanoid(String name, int width, int height) {
+		super(Tile.TILESIZE-10);
 		this.name = name;
+		w = width;
+		h = height;
+	}
+	
+	@Override
+	public Rectangle getHitbox(int x, int y) {
+		return new Rectangle(x, y, w, h);
 	}
 	
 	String tileSheetName = null;
@@ -24,21 +33,18 @@ public class EntityHumanoid extends Entity{
 		if(tileSheet == null){
 			tileSheet = ImageUtil.load(tileSheetName);
 		}
-		int w = 32; //The size of the image on the actual file, not screen
-		int h = 48;
+//		int w = 32; //The size of the image on the actual file, not screen
+//		int h = 48;
 		BufferedImage sprite = tileSheet.getSubimage((w*currentAnim), (h*direction), w, h);
 		int width = 32;
 		int height = 48;
-		int maxSize = this.getHitbox().height;
-		g.drawImage(sprite, x - ((width-maxSize)/2), y - ((height-maxSize)/2), width, height, null);
-		g.setColor(new Color(250,0,0,50));
-		g.drawRect(x, y, maxSize, maxSize);
+		g.drawImage(sprite, x, y, width, height, null);
 	}
 	
 	private int currentAnim = 0;
 	private int maxAnims = 3;
 	private int animTick = 0;
-	private int ticksPerAnim = 20;
+	private int ticksPerAnim = 10;
 	
 	@Override
 	public void setMoving(boolean moving){

@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
+import cinderthorne.world.DoorDefault;
 import cinderthorne.world.Tile;
 import cinderthorne.world.gamesection.GameSection;
 import cinderthorne.world.gamesection.GameSectionLoadHandler;
@@ -81,7 +82,13 @@ public class WorldUtil {
 			}
 		}
 	};
-	
+	public static GameSectionLoadHandler doors = new GameSectionLoadHandler(">doors") {
+		@Override
+		public void processLine(String line, GameSection world, int lineNumber) {
+			String[] params = line.split(" ");
+			world.addDoor(new DoorDefault(params));
+		}
+	};
 	
 	
 	public static GameSectionLoadHandler currentLoadHandler = null;

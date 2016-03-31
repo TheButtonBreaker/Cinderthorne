@@ -13,7 +13,7 @@ public class Entity {
 	public int posX;
 	public int posY;
 	public int size;
-	public int movespeed = 1;
+	public int movespeed = 3;
 	public int direction = 0;
 	protected boolean moving = false;
 	
@@ -92,6 +92,26 @@ public class Entity {
 	}
 
 	public void attemptMove(int right, int down, GameSection map) {
+		int xMult = 1;
+		if(right < 0){
+			xMult = -1;
+		}
+		int yMult = 1;
+		if(down < 0){
+			yMult = -1;
+		}
+		while(right != 0){
+			right -= 1*xMult;
+			attemptMove2(1*xMult,0,map);
+		}
+		while(down != 0){
+			down -= 1*yMult;
+			attemptMove2(0,1*yMult,map);
+		}
+		//attemptMove2(right,down,map);
+	}
+	//part 2 of the beloved function
+	private void attemptMove2(int right, int down, GameSection map){
 		down *= movespeed;
 		right *= movespeed;
 		if (canMoveTo(new Point(posX + right, posY + down), map)) {
